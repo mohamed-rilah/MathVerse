@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org" xmlns:sec="http://www.thymleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/styles.css}" rel="stylesheet"/>
+    <title> Admin Topic View </title>
+</head>
+<body>
+
+<header class="header">
+    <a th:href="@{/homepage}" class="logo"> MathVerse </a>
+
+    <nav class="navigation_bar">
+        <a th:href="@{/homepage}"> Exit Admin Panel </a>
+        <a th:href="@{/adminhomepage}"> Admin Homepage </a>
+
+        <a sec:authorize="isAuthenticated()" href="javascript: document.logoutForm.submit()"> Logout</a>
+
+        <form name="logoutForm" th:action="@{/logout}" method="post">
+            <input class="user_logout" type="hidden" value="Logout"/>
+        </form>
+
+    </nav>
+</header>
+
+<div class="title_section">
+    <div class="title">
+        <h1> Admin <mark class="orange"> topics </mark> </h1>
+    </div>
+</div>
+
+<div class="content">
+
+    <div class="topics_form">
+
+        <h1> Topics from CS1MCP Module </h1>
+
+        <p> Please use the input box below to enter topics from the CS1MCP Module </p>
+
+        <form th:action="@{/insertTopic}" method="post">
+
+            <input type="text" name="topicname" placeholder="Topic Name" required>
+
+            <input type="text" name="difficulty" placeholder="Difficulty" required>
+
+            <input class="submit" type="submit" name="submit" value="Insert">
+            <input type="hidden" name="submitted" value="true">
+
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

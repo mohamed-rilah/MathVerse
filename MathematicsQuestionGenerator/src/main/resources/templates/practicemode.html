@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org" xmlns:sec="http://www.thymleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/styles.css}" rel="stylesheet"/>
+    <title> Practice Mode</title>
+</head>
+<body>
+
+<header class="header">
+    <a th:href="@{/homepage}" class="logo"> MathVerse </a>
+
+    <nav class="navigation_bar">
+        <a th:href="@{/homepage}"> Home </a>
+        <a th:href="@{/explore}"> Explore </a>
+        <a th:href="@{/practice}"> Practice </a>
+
+        <a sec:authorize="isAnonymous()" th:href="@{/login}"> Sign In </a>
+        <a sec:authorize="isAnonymous()" th:href="@{/register}"> Register </a>
+
+        <a sec:authorize="isAuthenticated()" th:href="@{/myaccount}"> My Account </a>
+
+        <a sec:authorize="isAuthenticated()" href="javascript: document.logoutForm.submit()"> Logout</a>
+
+        <form name="logoutForm" th:action="@{/logout}" method="post">
+            <input class="user_logout" type="hidden" value="Logout"/>
+        </form>
+
+    </nav>
+</header>
+
+<div class="title_section">
+    <div class="title">
+        <h1> <mark class="orange"> Practice </mark> mode </h1>
+    </div>
+</div>
+
+<div class="content">
+
+    <div class="question">
+
+        <p> <b> Question </b> </p>
+
+        <div th:each="question: ${writtenQuestion}">
+
+            <p> <span th:text="${question}"> </span> </p>
+
+            <form th:action="@{/checkanswer}" th:object="${questionresponse}" method="post">
+                <input type="text" name="answer" th:field="*{enteredSolution}" placeholder="Answer"/>
+                <input class="submit" onclick="responseFunction()" type="submit" name="submit" value="Check Answer">
+                <input type="hidden" name="submitted" value="true">
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

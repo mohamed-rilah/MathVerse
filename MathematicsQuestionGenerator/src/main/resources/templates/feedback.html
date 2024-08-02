@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org" xmlns:sec="http://www.thymleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/styles.css}" rel="stylesheet"/>
+    <title> Generated Feedback </title>
+</head>
+<body>
+
+<header class="header">
+    <a th:href="@{/homepage}" class="logo"> MathVerse </a>
+
+    <nav class="navigation_bar">
+        <a th:href="@{/homepage}"> Home </a>
+        <a th:href="@{/explore}"> Explore </a>
+        <a th:href="@{/practice}"> Practice </a>
+
+        <a sec:authorize="isAnonymous()" th:href="@{/login}"> Sign In </a>
+        <a sec:authorize="isAnonymous()" th:href="@{/register}"> Register </a>
+
+        <a sec:authorize="isAuthenticated()" th:href="@{/myaccount}"> My Account </a>
+
+        <a sec:authorize="isAuthenticated()" href="javascript: document.logoutForm.submit()"> Logout</a>
+
+        <form name="logoutForm" th:action="@{/logout}" method="post">
+            <input class="user_logout" type="hidden" value="Logout"/>
+        </form>
+
+    </nav>
+</header>
+
+<div class="title_section">
+    <div class="title">
+        <h1> Generated <mark class="orange"> feedback </mark> </h1>
+    </div>
+</div>
+
+<div class="content">
+
+    <div class="detailedresponse">
+
+        <p> Question: <span th:text="${question}"></span> </p>
+
+        <p> Feedback: <span th:text="${response}"></span> </p>
+
+        <p th:text="${answerstreak}"> </p>
+
+        <div class="practicebuttons">
+            <a th:href="@{/practicemode/{name} (name=${topic.topicname}) }"> Continue Practice </a>
+            <a th:href="@{/practice}"> Leave Practice </a>
+        </div>
+
+    </div>
+
+
+</div>
+
+</body>
+</html>

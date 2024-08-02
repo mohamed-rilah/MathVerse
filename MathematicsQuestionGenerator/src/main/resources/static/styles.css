@@ -1,0 +1,296 @@
+/* WEBPAGE BODY STYLING */
+
+* {
+    font-family: "Roboto", "Arial", "sans-serif";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    color: #000000;
+}
+
+/* NAVIGATION BAR STYLING */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background-color: #1A2238;
+}
+
+.logo {
+    font-size: 32px;
+    color: #FFFFFF;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.navigation_bar a {
+    position: relative;
+    font-size: 18px;
+    color: #FFFFFF;
+    font-weight: 500;
+    margin-left: 40px;
+    text-decoration: none;
+}
+
+.navigation_bar a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: #FF6A3D;
+    transition: .3s;
+}
+
+.navigation_bar a:hover::before {
+    width: 100%;
+}
+
+/* PAGE TITLE STYLING */
+
+.title_section {
+    display: block;
+    padding-top: 80px;
+    padding-bottom: 25px;
+    overflow: hidden;
+    background-color: #1A2238;
+    border-radius: 0% 0% 5% 20%;
+}
+
+.title {
+    padding-top: 5px;
+    padding-left: 60px;
+    height: 50px;
+    width: 800px;
+}
+
+.title h1 {
+    font-size: 36px;
+    color: #FFFFFF
+}
+
+mark.orange {
+    background: #1A2238;;
+    color: #FF6A3D;
+}
+
+/* BASE PAGE STYLING */
+
+.content {
+    padding-left: 60px;
+    padding-top: 15px;
+    font-size: 18px;
+}
+
+/* HOMEPAGE STYLING */
+
+.introductory_content {
+    margin-top: 10px;
+    height: auto;
+    width: 600px;
+}
+
+.introductory_content p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 10px;
+}
+
+/* EXPLORE PAGE STYLING */
+
+.module_information {
+    width:800px;
+}
+
+.module_topics {
+    width:800px;
+    margin-top: 10px;
+}
+
+.topic_name {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/* TOPIC TABLE STYLING (PRACTICE PAGE & ADMIN HOMEPAGE) */
+
+.topic_table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    min-width: 200px;
+}
+
+.topic_table thead tr {
+    background-color: #FF6A3D;
+    color: #000000;
+    text-align: left;
+}
+
+.topic_table th, .topic_table td {
+    padding: 12px 15px;
+}
+
+.topic_table tbody tr {
+    border-bottom: 1px solid #000000;
+}
+
+.topic_table tbody tr td a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.topic_table tbody tr td a:hover {
+    text-decoration: underline;
+}
+
+.topic_table tbody tr:last-of-type {
+    border-bottom: 2px solid #FF6A3D;
+}
+
+
+/* PRACTICE MODE PAGE */
+
+.question p {
+    margin-bottom: 10px;
+}
+
+.question input[type=text] {
+    height: 25px;
+    width: 200px;
+}
+
+
+.question input[type=submit] {
+    display: block;
+    margin-top: 10px;
+    background-color: #FF6A3D;
+    border: none;
+    color: white;
+    font-weight: 700;
+    height: 25px;
+    width: 200px;
+}
+
+/* FEEDBACK PAGE STYLING */
+
+.detailedresponse {
+    padding: 14px;
+    background-color: #FFFFFF;
+}
+
+.detailedresponse p{
+    margin-bottom: 10px;
+}
+
+.detailedresponse a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 200px;
+    color: #FFFFFF;
+    border-radius: 3%;
+    background-color: #FF6A3D;
+}
+
+.detailedresponse a:hover {
+    text-decoration: underline;
+}
+.adminlink {
+    margin-top: 10px;
+}
+
+.adminlink a {
+    text-decoration: none;
+    font-weight: 700;
+    color: black;
+}
+
+.adminlink a:hover {
+    text-decoration: underline;
+}
+
+/* FORMS STYLING (USER & ADMIN) */
+
+.signin_form h1, .signup_form h1, .topics_form h1 {
+    font-size: 32px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.signin_form, .signup_form, .topics_form {
+    margin: auto;
+    margin-top: 100px;
+    width:30%;
+    padding: 14px;
+    background-color: #FFFFFF;
+}
+
+.signin_form input[type=text], .signin_form input[type=password], .signup_form input[type=text], .signup_form input[type=password], .topics_form input[type=text] {
+    width: 100%;
+    height: 25px;
+    margin: auto;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.signin_form input[type=submit], .signup_form input[type=submit], .topics_form input[type=submit] {
+    width: 100%;
+    height: 25px;
+    display: inline-block;
+    background-color: #FF6A3D;
+    border: none;
+    color: white;
+    margin: auto;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.signin_form a, .signup_form a {
+    text-decoration: none;
+    font-weight: 700;
+    color: black;
+}
+
+.signin_form a:hover, .signup_form a:hover {
+    text-decoration: underline;
+}
+
+/* ADMIN USER TABLE */
+
+.user_table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    min-width: 200px;
+}
+
+.user_table thead tr {
+    background-color: #FF6A3D;
+    color: #000000;
+    text-align: left;
+}
+
+.user_table th, .user_table td {
+    padding: 12px 15px;
+}
+
+.user_table tbody tr {
+    border-bottom: 1px solid #000000;
+}
+
+.user_table tbody tr:last-of-type {
+    border-bottom: 2px solid #FF6A3D;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org" xmlns:sec="http://www.thymleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/styles.css}" rel="stylesheet"/>
+    <title> Admin Homepage </title>
+</head>
+<body>
+
+<header class="header">
+    <a th:href="@{/homepage}" class="logo"> MathVerse </a>
+
+    <nav class="navigation_bar">
+        <a th:href="@{/homepage}"> Exit Admin Panel </a>
+        <a th:href="@{/adminhomepage}"> Admin Homepage </a>
+
+        <a sec:authorize="isAuthenticated()" href="javascript: document.logoutForm.submit()"> Logout</a>
+
+        <form name="logoutForm" th:action="@{/logout}" method="post">
+            <input class="user_logout" type="hidden" value="Logout"/>
+        </form>
+
+    </nav>
+</header>
+
+<div class="title_section">
+    <div class="title">
+        <h1> Admin
+            <mark class="orange"> homepage</mark>
+        </h1>
+    </div>
+</div>
+
+<div class="content">
+
+    <div class="admin_module_table">
+        <p> Topic List</p>
+        <br>
+        <a th:href="@{/admintopics}"> Add New Topic </a>
+
+        <table class="topic_table">
+            <thead>
+            <tr>
+                <th> Topic Name</th>
+                <th> Topic Difficulty</th>
+                <th> Delete Topic</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <div class="admin_topic_list" th:each="topic: ${topics}">
+                <tr>
+                    <td><p th:text="${topic.topicname}"></p></td>
+                    <td><p th:text="${topic.difficulty}"></p></td>
+                    <td><a th:href="@{/deleteTopic/{id} (id=${topic.id}) }"> Delete </a></td>
+                </tr>
+            </div>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="admin_user_table">
+        <p> User List</p>
+        <br>
+
+        <table class="user_table">
+            <thead>
+            <tr>
+                <th> Firstname</th>
+                <th> Surname</th>
+                <th> Username</th>
+                <th> Role</th>
+                <th> Delete User</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <div class="admin_topic_list" th:each="user: ${users}">
+                <tr>
+                    <td><p th:text="${user.firstname}"></p></td>
+                    <td><p th:text="${user.surname}"></p></td>
+                    <td><p th:text="${user.username}"></p></td>
+                    <td><p th:text="${user.role}"></p></td>
+                    <td><a th:href="@{/deleteUser/{id} (id=${user.id}) }"> Delete </a></td>
+                </tr>
+            </div>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>

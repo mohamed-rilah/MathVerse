@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org" xmlns:sec="http://www.thymleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/styles.css}" rel="stylesheet"/>
+    <title> Explore </title>
+</head>
+<body>
+
+<header class="header">
+    <a th:href="@{/homepage}" class="logo"> MathVerse </a>
+
+    <nav class="navigation_bar">
+
+        <a th:href="@{/homepage}"> Home </a>
+        <a th:href="@{/explore}"> Explore </a>
+        <a th:href="@{/practice}"> Practice </a>
+
+        <a sec:authorize="isAnonymous()" th:href="@{/login}"> Sign In </a>
+        <a sec:authorize="isAnonymous()" th:href="@{/register}"> Register </a>
+
+        <a sec:authorize="isAuthenticated()" th:href="@{/myaccount}"> My Account </a>
+
+        <a sec:authorize="isAuthenticated()" href="javascript: document.logoutForm.submit()"> Logout</a>
+
+        <form name="logoutForm" th:action="@{/logout}" method="post">
+            <input class="user_logout" type="hidden" value="Logout"/>
+        </form>
+
+    </nav>
+</header>
+
+<div class="title_section">
+    <div class="title">
+        <h1> <mark class="orange"> Explore </mark> content </h1>
+    </div>
+</div>
+
+<div class="content">
+
+    <div class="module_information">
+        <p>
+            MathVerse aims to test users based on the topics that are taught in the CS1MCP Module.
+            The list below shows the current selection of topics that are included in the CS1MCP Module Specification.
+        </p>
+    </div>
+
+    <div class="module_topics">
+        <div class="topic_name" th:each="topic: ${topics}">
+            <span th:text="${topic.topicname}"></span>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

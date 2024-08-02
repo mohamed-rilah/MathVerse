@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org" xmlns:sec="http://www.thymleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/styles.css}" rel="stylesheet"/>
+    <title> My Account </title>
+</head>
+<body>
+
+<header class="header">
+    <a th:href="@{/homepage}" class="logo"> MathVerse </a>
+
+    <nav class="navigation_bar">
+        <a th:href="@{/homepage}"> Home </a>
+        <a th:href="@{/explore}"> Explore </a>
+        <a th:href="@{/practice}"> Practice </a>
+
+        <a sec:authorize="isAnonymous()" th:href="@{/login}"> Sign In </a>
+        <a sec:authorize="isAnonymous()" th:href="@{/register}"> Register </a>
+
+        <a sec:authorize="isAuthenticated()" th:href="@{/myaccount}"> My Account </a>
+
+        <a sec:authorize="isAuthenticated()" href="javascript: document.logoutForm.submit()"> Logout</a>
+
+        <form name="logoutForm" th:action="@{/logout}" method="post">
+            <input class="user_logout" type="hidden" value="Logout"/>
+        </form>
+
+    </nav>
+</header>
+
+<div class="title_section">
+    <div class="title">
+        <h1> My <mark class="orange"> account </mark> </h1>
+    </div>
+</div>
+
+<div class="content">
+    <div th:each="user: ${user}">
+        <h1> Welcome back,
+            <span th:text="${user.firstname}"></span>
+            <span th:text="${user.surname}"></span>
+        </h1>
+    </div>
+
+    <div class="adminlink">
+        <div sec:authorize="isAuthenticated()">
+            <div sec:authorize="hasAnyAuthority('Admin')">
+                <p>
+                    As you have Admin Privileges,
+                    <a th:href="@{/adminhomepage}"> Access Admin Panel </a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <table class="user_table">
+        <thead>
+            <tr>
+                <th> Firstname</th>
+                <th> Surname</th>
+                <th> Username</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        <div class="admin_topic_list" th:each="user: ${user}">
+            <tr>
+                    <td><p th:text="${user.firstname}"></p></td>
+                    <td><p th:text="${user.surname}"></p></td>
+                    <td><p th:text="${user.username}"></p></td>
+            </tr>
+        </div>
+        </tbody>
+    </table>
+
+
+</div>
+
+</body>
+</html>
